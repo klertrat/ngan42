@@ -6,12 +6,11 @@
 /*   By: klertrat <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/26 14:06:33 by klertrat          #+#    #+#             */
-/*   Updated: 2022/07/27 14:08:32 by klertrat         ###   ########.fr       */
+/*   Updated: 2022/07/27 18:26:07 by klertrat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include<unistd.h>
-#include<stdio.h>
 
 void	ft_putstr(char *a)
 {
@@ -27,62 +26,59 @@ void	ft_putstr(char *a)
 
 int	ft_strcmp(char *s1, char *s2)
 {
-	int	i;
+	unsigned char	c1;
+	unsigned char	c2;
 
-	i = 0;
-	while (s1[i] && s2[i])
+	c1 = '0';
+	c2 = '0';
+	while (c1 == c2)
 	{
-		if (s1[i] == s2[i])
-			i++;
-		else
-		{	
-			break;
-		}
+		c1 = *s1++;
+		c2 = *s2++;
+		if (c1 == '\0')
+			return (c1 - c2);
 	}
-	return (s1[i] - s2[i]);
-}
-
-void	ft_swap(char **a, char **b)
-{
-	char *c;
-
-	c = *a;
-	*a = *b;
-	*b = c;
+	return (c1 - c2);
 }
 
 void	sort(char **argv, int argc)
 {
-	int	i;
-	int	j;
+	int		i;
+	int		j;
+	char	*temp;
 
 	i = 1;
-	j = 1;
-	while (j < argc - 1)
+	while (i < argc - 1)
 	{
-		i = j + 1;
-		while (ft_strcmp(argv[j] ,argv[i]) > 0 && i <= argc)
-		{	
-			ft_swap(&argv[j], &argv[i]);
+		j = 1;
+		while (j < argc - 1)
+		{
+			if (ft_strcmp(argv[j], argv[j + 1]) > 0)
+			{
+				temp = argv[j];
+				argv[j] = argv[j + 1];
+				argv[j + 1] = temp;
+			}
+			j++;
 		}
-		j++;
+		i++;
 	}
 }
 
 int	main(int argc, char **argv)
 {
-	int	i;
+	int	j;
 
-	i = 1;
+	j = 1;
 	if (argc > 2)
 	{
 		sort(argv, argc);
 	}
-	while (i < argc)
+	while (j < argc)
 	{
-		ft_putstr(argv[i]);
+		ft_putstr(argv[j]);
 		write(1, "\n", 1);
-		i++;
+		j++;
 	}
 	return (0);
 }
