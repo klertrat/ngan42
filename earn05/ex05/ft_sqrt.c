@@ -6,7 +6,7 @@
 /*   By: klertrat <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/23 15:48:27 by klertrat          #+#    #+#             */
-/*   Updated: 2022/07/26 15:03:22 by klertrat         ###   ########.fr       */
+/*   Updated: 2022/07/30 14:30:06 by klertrat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@ int	ft_sqrt(int nb)
 	}
 	return (0);
 }
-/*
+
 int	main(void)
 {
-	printf("ans = %d\n", ft_sqrt(2147395600));
-}*/
+	printf("ans = %d\n", ft_sqrt(1e8));
+}

@@ -1,39 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcmp.c                                        :+:      :+:    :+:   */
+/*   ft_str_is_numeric.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: klertrat <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/20 13:04:40 by klertrat          #+#    #+#             */
-/*   Updated: 2022/07/27 15:47:19 by klertrat         ###   ########.fr       */
+/*   Created: 2022/07/18 20:59:29 by klertrat          #+#    #+#             */
+/*   Updated: 2022/07/20 11:35:05 by klertrat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include<stdio.h>
-#include<string.h>
 
-int	ft_strcmp(char *s1, char *s2)
+int	ft_str_is_numeric(char *str)
 {
-	unsigned char	i;
-	unsigned char	j;
+	int	i;
 
-	i = '0';
-	j = '0';
-	while (i == j)
+	i = 0;
+	if (str[0] == '\0')
 	{
-		i = *s1++;
-		j = *s2++;
-		if (i == '\0')
-			return (i - j);
+		return (1);
 	}
-	return (i - j);
+	while (str[i] != '\0')
+	{
+		if (!(str[i] >= '0' && str[i] <= '9'))
+		{
+			return (0);
+		}
+		else
+			i++;
+	}
+	return (1);
 }
 
-int	main(void)
+/*int	main(void)
 {
-	char r[] = "t";
-	char y[] = "T";
-	printf("%d\n",strcmp(r,y));
-	printf("new:%d",ft_strcmp(r,y));
-}
+	char	t[] = "[62749y9";
+	printf("%d", ft_str_is_numeric(t));
+}*/

@@ -1,39 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcmp.c                                        :+:      :+:    :+:   */
+/*   ft_print_program_name.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: klertrat <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/20 13:04:40 by klertrat          #+#    #+#             */
-/*   Updated: 2022/07/27 15:47:19 by klertrat         ###   ########.fr       */
+/*   Created: 2022/07/23 15:52:51 by klertrat          #+#    #+#             */
+/*   Updated: 2022/07/27 18:27:06 by klertrat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include<stdio.h>
-#include<string.h>
+#include<unistd.h>
 
-int	ft_strcmp(char *s1, char *s2)
+void	ft_putstr(char *str)
 {
-	unsigned char	i;
-	unsigned char	j;
+	int	i;
 
-	i = '0';
-	j = '0';
-	while (i == j)
+	i = 0;
+	while (*(str + i) != '\0')
 	{
-		i = *s1++;
-		j = *s2++;
-		if (i == '\0')
-			return (i - j);
+		write(1, &str[i], 1);
+		i++;
 	}
-	return (i - j);
 }
 
-int	main(void)
+int	main(int argc, char **argv)
 {
-	char r[] = "t";
-	char y[] = "T";
-	printf("%d\n",strcmp(r,y));
-	printf("new:%d",ft_strcmp(r,y));
+	argc = 0;
+	ft_putstr(argv[0]);
+	write(1, "\n", 1);
 }

@@ -1,39 +1,49 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcmp.c                                        :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: klertrat <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/20 13:04:40 by klertrat          #+#    #+#             */
-/*   Updated: 2022/07/27 15:47:19 by klertrat         ###   ########.fr       */
+/*   Created: 2022/07/27 21:21:40 by klertrat          #+#    #+#             */
+/*   Updated: 2022/07/27 23:39:44 by klertrat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include<stdio.h>
-#include<string.h>
+#include <stdlib.h>
+#include <stdio.h>
+#include <unistd.h>
 
-int	ft_strcmp(char *s1, char *s2)
+char	*ft(const char *src)
 {
-	unsigned char	i;
-	unsigned char	j;
+	char	*ans;
+	int		i;
+	int		size;
 
-	i = '0';
-	j = '0';
-	while (i == j)
+	size = 0;
+	i = 0;
+	while (src[size])
+		size++;
+	ans = (char *)malloc(sizeof(char) * (size));
+	if (ans == NULL)
+		return (NULL);
+	while (src[i] != '\0')
 	{
-		i = *s1++;
-		j = *s2++;
-		if (i == '\0')
-			return (i - j);
+		ans[i] = src[i];
+		i++;
 	}
-	return (i - j);
+	ans[i] = '\0';
+	return (ans);
 }
-
+/*
 int	main(void)
 {
-	char r[] = "t";
-	char y[] = "T";
-	printf("%d\n",strcmp(r,y));
-	printf("new:%d",ft_strcmp(r,y));
-}
+	char	*ans;
+
+	ans = ft("djldkdk");
+	while (*ans != '\0')
+	{
+		write(1, ans++, 1);
+	}
+	return (0);
+}*/

@@ -1,39 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcmp.c                                        :+:      :+:    :+:   */
+/*   fizzbuzz.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: klertrat <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/20 13:04:40 by klertrat          #+#    #+#             */
-/*   Updated: 2022/07/27 15:47:19 by klertrat         ###   ########.fr       */
+/*   Created: 2022/08/04 14:06:02 by klertrat          #+#    #+#             */
+/*   Updated: 2022/08/04 14:19:31 by klertrat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include<stdio.h>
-#include<string.h>
-
-int	ft_strcmp(char *s1, char *s2)
-{
-	unsigned char	i;
-	unsigned char	j;
-
-	i = '0';
-	j = '0';
-	while (i == j)
-	{
-		i = *s1++;
-		j = *s2++;
-		if (i == '\0')
-			return (i - j);
-	}
-	return (i - j);
-}
+#include<unistd.h>
 
 int	main(void)
 {
-	char r[] = "t";
-	char y[] = "T";
-	printf("%d\n",strcmp(r,y));
-	printf("new:%d",ft_strcmp(r,y));
+	int	i;
+	char	j;
+
+	i = 1;
+	while (i <= 100)
+	{
+		if (i % 3 == 0)
+			write(1, "fizz", 4);
+		if (i % 5 == 0)
+			write(1, "buzz", 4);
+		else if (i % 3 != 0 && i % 5 != 0)
+		{
+			if (i > 9)
+			{
+				j = (i / 10) + '0';
+				write(1, &j, 1);
+			}
+			j = (i % 10) + '0';
+			write(1, &j, 1);
+		}
+		write(1, "\n", 1);
+		i++;
+	}
+	return (0);
 }

@@ -1,39 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcmp.c                                        :+:      :+:    :+:   */
+/*   ft_strcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: klertrat <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/20 13:04:40 by klertrat          #+#    #+#             */
-/*   Updated: 2022/07/27 15:47:19 by klertrat         ###   ########.fr       */
+/*   Created: 2022/08/04 14:27:25 by klertrat          #+#    #+#             */
+/*   Updated: 2022/08/04 14:38:06 by klertrat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include<stdio.h>
-#include<string.h>
-
-int	ft_strcmp(char *s1, char *s2)
+char	*ft_strcpy(char *s1, char *s2)
 {
-	unsigned char	i;
-	unsigned char	j;
+	int	i;
 
-	i = '0';
-	j = '0';
-	while (i == j)
+	i = 0;
+	while (s2[i] != '\0')
 	{
-		i = *s1++;
-		j = *s2++;
-		if (i == '\0')
-			return (i - j);
+		s1[i] = s2[i];
+		i++;
 	}
-	return (i - j);
-}
-
-int	main(void)
-{
-	char r[] = "t";
-	char y[] = "T";
-	printf("%d\n",strcmp(r,y));
-	printf("new:%d",ft_strcmp(r,y));
+	s1[i] = '\0';
+	return (s1);
 }

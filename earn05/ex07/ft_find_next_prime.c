@@ -6,7 +6,7 @@
 /*   By: klertrat <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/23 15:50:56 by klertrat          #+#    #+#             */
-/*   Updated: 2022/07/26 14:59:51 by klertrat         ###   ########.fr       */
+/*   Updated: 2022/07/30 14:31:46 by klertrat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,8 @@ int	ft_find_next_prime(int nb)
 		nb++;
 	return (nb);
 }
-/*
+
 int	main(void)
 {
-	printf("%d", ft_find_next_prime(-2147483648));
-}*/
+	printf("%d", ft_find_next_prime(2147483647));
+}

@@ -1,39 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcmp.c                                        :+:      :+:    :+:   */
+/*   ft_rev_params.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: klertrat <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/20 13:04:40 by klertrat          #+#    #+#             */
-/*   Updated: 2022/07/27 15:47:19 by klertrat         ###   ########.fr       */
+/*   Created: 2022/07/23 15:54:43 by klertrat          #+#    #+#             */
+/*   Updated: 2022/07/27 18:22:57 by klertrat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include<stdio.h>
-#include<string.h>
+#include<unistd.h>
 
-int	ft_strcmp(char *s1, char *s2)
+void	ft_putchar(char z)
 {
-	unsigned char	i;
-	unsigned char	j;
-
-	i = '0';
-	j = '0';
-	while (i == j)
-	{
-		i = *s1++;
-		j = *s2++;
-		if (i == '\0')
-			return (i - j);
-	}
-	return (i - j);
+	write(1, &z, 1);
 }
 
-int	main(void)
+int	main(int argc, char **argv)
 {
-	char r[] = "t";
-	char y[] = "T";
-	printf("%d\n",strcmp(r,y));
-	printf("new:%d",ft_strcmp(r,y));
+	int	i;
+	int	j;
+
+	i = argc - 1;
+	while (i > 0)
+	{
+		j = 0;
+		while (argv[i][j] != '\0')
+		{
+			ft_putchar(argv[i][j]);
+			j++;
+		}
+		if (i >= 1)
+			ft_putchar('\n');
+		i--;
+	}
+	return (0);
 }

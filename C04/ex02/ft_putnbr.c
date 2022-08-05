@@ -1,39 +1,48 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcmp.c                                        :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: klertrat <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/20 13:04:40 by klertrat          #+#    #+#             */
-/*   Updated: 2022/07/27 15:47:19 by klertrat         ###   ########.fr       */
+/*   Created: 2022/07/21 20:51:16 by klertrat          #+#    #+#             */
+/*   Updated: 2022/07/25 09:54:56 by klertrat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include<stdio.h>
-#include<string.h>
+#include<unistd.h>
 
-int	ft_strcmp(char *s1, char *s2)
+void	ft_putnbr(int nb)
 {
-	unsigned char	i;
-	unsigned char	j;
+	int	i;
+	int	r[11];
 
-	i = '0';
-	j = '0';
-	while (i == j)
+	i = 0;
+	if (nb == 0)
+		write (1, "0", 1);
+	if (nb == -2147483648)
 	{
-		i = *s1++;
-		j = *s2++;
-		if (i == '\0')
-			return (i - j);
+		write (1, "-2147483648", 11);
 	}
-	return (i - j);
+	if (nb < 0 && nb != -2147483648)
+	{
+		write (1, "-", 1);
+		nb = nb * -1;
+	}
+	while (nb > 0)
+	{
+		r[i] = (nb % 10) + '0';
+		nb = nb / 10;
+		i++;
+	}
+	while (--i >= 0)
+	{
+		write (1, &r[i], 1);
+	}
 }
-
+/*
 int	main(void)
 {
-	char r[] = "t";
-	char y[] = "T";
-	printf("%d\n",strcmp(r,y));
-	printf("new:%d",ft_strcmp(r,y));
-}
+	ft_putnbr(-2147483648);
+	return (0);
+}*/

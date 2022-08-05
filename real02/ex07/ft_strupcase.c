@@ -1,39 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcmp.c                                        :+:      :+:    :+:   */
+/*   ft_strupcase.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: klertrat <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/20 13:04:40 by klertrat          #+#    #+#             */
-/*   Updated: 2022/07/27 15:47:19 by klertrat         ###   ########.fr       */
+/*   Created: 2022/07/19 14:31:25 by klertrat          #+#    #+#             */
+/*   Updated: 2022/07/20 17:33:33 by klertrat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include<stdio.h>
-#include<string.h>
 
-int	ft_strcmp(char *s1, char *s2)
+char	*ft_strupcase(char *str)
 {
-	unsigned char	i;
-	unsigned char	j;
+	int	i;
 
-	i = '0';
-	j = '0';
-	while (i == j)
+	i = 0;
+	while (str[i] != '\0')
 	{
-		i = *s1++;
-		j = *s2++;
-		if (i == '\0')
-			return (i - j);
+		while ((str[i] >= 'a' && str[i] <= 'z') || \
+				(str[i] >= 'A' && str[i] <= 'Z'))
+		{
+			if (str[i] >= 'a' && str[i] <= 'z')
+			{
+				str[i] = str[i] - 32;
+			}
+			i++;
+		}
+		i++;
 	}
-	return (i - j);
+	return (str);
 }
 
 int	main(void)
 {
-	char r[] = "t";
-	char y[] = "T";
-	printf("%d\n",strcmp(r,y));
-	printf("new:%d",ft_strcmp(r,y));
+	char b[] = "sryYsU";
+	printf("%s\n", b);
+	printf("new :%s", ft_strupcase(b));
 }

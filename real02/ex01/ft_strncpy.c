@@ -1,39 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcmp.c                                        :+:      :+:    :+:   */
+/*   ft_strncpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: klertrat <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/20 13:04:40 by klertrat          #+#    #+#             */
-/*   Updated: 2022/07/27 15:47:19 by klertrat         ###   ########.fr       */
+/*   Created: 2022/07/18 16:51:58 by klertrat          #+#    #+#             */
+/*   Updated: 2022/07/19 16:17:00 by klertrat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include<stdio.h>
 #include<string.h>
 
-int	ft_strcmp(char *s1, char *s2)
+char	*ft_strncpy(char *dest, char *src, unsigned int n)
 {
-	unsigned char	i;
-	unsigned char	j;
+	unsigned int	i;
 
-	i = '0';
-	j = '0';
-	while (i == j)
+	i = 0;
+	while (*(src + i) != '\0' && i < n)
 	{
-		i = *s1++;
-		j = *s2++;
-		if (i == '\0')
-			return (i - j);
+		dest[i] = src[i];
+		i++;
 	}
-	return (i - j);
-}
-
-int	main(void)
-{
-	char r[] = "t";
-	char y[] = "T";
-	printf("%d\n",strcmp(r,y));
-	printf("new:%d",ft_strcmp(r,y));
+	while (i < n)
+	{
+		dest[i] = '\0';
+		i++;
+	}
+	return (dest);
 }
