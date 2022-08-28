@@ -1,47 +1,47 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: klertrat <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/27 19:29:07 by klertrat          #+#    #+#             */
-/*   Updated: 2022/08/27 20:42:55 by klertrat         ###   ########.fr       */
+/*   Created: 2022/08/27 18:51:53 by klertrat          #+#    #+#             */
+/*   Updated: 2022/08/27 19:28:25 by klertrat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include<stdlib.h>
 #include<stdio.h>
+#include<stdlib.h>
 #include"libft.h"
 
-char	*ft_strjoin(char const *s1, char const *s2)
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
+	size_t	i;
 	char	*dest;
-	char	*ans;
 
-	if (!s1 || !s2)
+	i = 0;
+	dest = (char *)malloc(sizeof(char) * len + 1);
+	if (!s || !dest)
 		return (NULL);
-	dest = (char *)malloc(ft_strlen(s1) + ft_strlen(s2) + 1);
-	if (!dest)
-		return (NULL);
-	ans = dest;
-	while (*s1 != '\0')
+	if (start > ft_strlen(s))
 	{
-		*dest = *s1;
-		dest++;
-		s1++;
+		dest[0] = '\0';
+		return (dest);
 	}
-	while (*s2 != '\0')
+	while (i < len && s[start] != '\0')
 	{
-		*dest = *s2;
-		dest++;
-		s2++;
+		dest[i] = s[start];
+		start++;
+		i++;
 	}
-	*dest = '\0';
-	return (ans);
+	dest[i] = '\0';
+	return (dest);
 }
-
+/*
 int	main(void)
 {
-	printf("%s\n", ft_strjoin("ugfh", "djj"));
-}
+	char* str;
+	str = ft_substr("HelloTongNOOOOO", 30, 4);
+	printf("%s\n", str);
+	return 0;
+}*/
